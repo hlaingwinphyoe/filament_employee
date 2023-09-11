@@ -11,11 +11,11 @@ class EmployeeStatsOverview extends BaseWidget
 {
     protected function getStats(): array
     {
-        $us = Country::where('country_code', 'US')->withCount('employees')->first();
+        $jp = Country::where('country_code', 'JP')->withCount('employees')->first();
         $uk = Country::where('country_code', 'UK')->withCount('employees')->first();
         return [
             Stat::make('Employees', Employee::all()->count()),
-            Stat::make($us->name . ' Employees', $us->employees_count),
+            Stat::make($jp->name . ' Employees', $jp->employees_count),
             Stat::make($uk->name . ' Employees', $uk->employees_count),
         ];
     }
